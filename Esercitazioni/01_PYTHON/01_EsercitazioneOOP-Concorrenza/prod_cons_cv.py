@@ -179,4 +179,20 @@ TRANSFER VERSO SISTEMI DISTRIBUITI:
 PAROLE CHIAVE:
 - condition variable, wait, notify, lock, mutua esclusione, deadlock, risveglio spurio, bounded queue, race condition, pattern produttore-consumatore
 
+================== NOTE SULLA SUCCESSIONE DELLE ATTIVAZIONI "A BATCH" ==================
+
+Perché produttori e consumatori lavorano "a blocchi" (batch), invece che alternarsi uno a uno?
+
+- All’avvio, tutti i consumer partono per primi (perché sono creati e avviati prima), acquisiscono il lock in sequenza e trovano la coda vuota: vanno tutti subito in attesa (wait).
+- Poi partono tutti i producer. Il primo producer acquisisce il lock, produce un item, notifica un consumer e rilascia il lock. Tuttavia, quando esce dal with, il lock può essere acquisito sia da altri producer che da consumer risvegliati.
+- In pratica, con molti thread pronti, è molto probabile che altri producer (che sono tutti nello stato "ready" e non sospesi) riescano ad acquisire il lock uno dopo l'altro, producendo rapidamente fino a riempire la coda. Solo quando la coda è piena, i producer restanti vanno in attesa.
+- A quel punto i consumer che erano stati notificati possono finalmente acquisire il lock, consumare e notificare i producer a loro volta. Anche qui, l'acquisizione del lock non è garantita in ordine stretto: spesso si osserva un blocco di consumer che svuota tutta la coda.
+- Questo fenomeno è dovuto al fatto che le Condition Variable non garantiscono priorità tra thread risvegliati: il lock va semplicemente al prossimo thread "ready" nello scheduling del sistema operativo.
+- Il risultato è un'alternanza a blocchi: prima una sequenza di produzioni, poi una sequenza di consumi, e così via (batch), non uno a uno.
+
+CONCETTO DA PORTARE ALL’ESAME:
+- L’effetto batch è fisiologico in presenza di molti thread concorrenti e dipende sia dalla logica delle Condition Variable sia dallo scheduling del sistema operativo.
+- L’alternanza uno-a-uno tra producer e consumer non è garantita (e nemmeno richiesta dalla correttezza della soluzione), conta solo che la coda non venga mai letta vuota o scritta piena, e che nessun thread rimanga bloccato per sempre senza motivo.
+
 """
+
