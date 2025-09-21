@@ -194,5 +194,7 @@ CONCETTO DA PORTARE ALL’ESAME:
 - L’effetto batch è fisiologico in presenza di molti thread concorrenti e dipende sia dalla logica delle Condition Variable sia dallo scheduling del sistema operativo.
 - L’alternanza uno-a-uno tra producer e consumer non è garantita (e nemmeno richiesta dalla correttezza della soluzione), conta solo che la coda non venga mai letta vuota o scritta piena, e che nessun thread rimanga bloccato per sempre senza motivo.
 
+
+
 """
 
