@@ -23,7 +23,7 @@ def produce_item():
 
 def producer():
     """
-    Thread produttore:
+    Thread produttore: abab
     1. Attende che ci sia spazio libero (empty).
     2. Acquisisce il mutex.
     3. Produce e inserisce un item nella coda.
