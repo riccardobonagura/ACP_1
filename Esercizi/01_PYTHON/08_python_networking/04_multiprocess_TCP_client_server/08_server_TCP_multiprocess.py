@@ -1,3 +1,5 @@
+#analogo all'esempio multi-thread con la libreria threading, l'unica differenza
+#è che si usano le primitive della libreria multiprocess, che però hanno uguale architettura (firma)
 import socket
 import multiprocess as mp
 
