@@ -1,5 +1,5 @@
 import socket
-import threading
+import threading #necessario per la gestione threads
 
 # thread function
 def thd_fun(c):
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     host = ""
     cur_port = 0
 
-    # create and bind a TCP socket
+    # la socket è unica, le connessioni usaranno nuovi thread figli
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((host, cur_port))
     cur_port = s.getsockname()[1] # get used port
