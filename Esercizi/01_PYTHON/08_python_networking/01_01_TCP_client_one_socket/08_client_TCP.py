@@ -1,3 +1,4 @@
+#stessa cosa dell'esempio base con socket passata dall'esterno
 import socket
 import sys
 import time  # Import time module for latency measurement
