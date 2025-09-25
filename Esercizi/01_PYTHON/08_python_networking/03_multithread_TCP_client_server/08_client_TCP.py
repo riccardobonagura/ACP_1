@@ -1,3 +1,4 @@
+#tutto resta uguale lato client
 import socket, sys
 
 def client(PORT):
