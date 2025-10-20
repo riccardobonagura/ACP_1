@@ -21,7 +21,8 @@ public class Buffer {
 		full = false; 	
 	}
 	
-	
+	//synchronized: permette un'unica invocazione alla volta del metodo! 
+	// (risolve la race condition tra thread dello stesso tipo
 	public synchronized void produci (){
 		
 		System.out.println ( Thread.currentThread().getName() + ":  invocazione produci" );
