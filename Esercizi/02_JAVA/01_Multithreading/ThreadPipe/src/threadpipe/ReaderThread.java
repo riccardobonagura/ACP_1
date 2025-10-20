@@ -19,6 +19,10 @@ public class ReaderThread extends Thread {
 		}catch ( IOException e ){
 			e.printStackTrace();
 		}
+/* 	L'eccezione è lanciata da pipeInputStream(), che
+	deve connettere il PipedInputStream al PipedOutputStream fornito.
+	Questa connessione può fallire.
+*/
 	}	
 	public void run (){
 		
