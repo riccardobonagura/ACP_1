@@ -10,7 +10,7 @@ public class WorkerServer extends Thread {
 	public WorkerServer ( Socket skt ){
 		s=skt;
 	}
-	
+	//lavora in maniera esattamente identica al client
 	public void run (){
 		
 		try{
