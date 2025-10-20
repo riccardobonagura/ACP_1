@@ -1,5 +1,8 @@
 package prodcons1b;
 
+//è il buffer stesso a fornire i metodi per accedere alla risorsa, 
+//produttore e consumatore si limitano ad invocare i rispettivi 
+//metodi del buffer e ad essere Runnable
 public class Buffer {
 	
 	private long content;
