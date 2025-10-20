@@ -1,7 +1,7 @@
 
 /* WorkerThread example */
 
-class WorkerThread implements Runnable {  
+class WorkerThread implements Runnable {  //più comodo di Thread
     private String message;  
 
     public WorkerThread(String s){  
