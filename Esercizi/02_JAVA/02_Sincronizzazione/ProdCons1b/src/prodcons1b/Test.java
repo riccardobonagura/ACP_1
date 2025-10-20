@@ -4,17 +4,12 @@ import java.io.*;
 
 public class Test {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args)  {
-		// TODO Auto-generated method stub
-
 		
-		// * creazione del buffer condiviso * 
+		// creazione del buffer condiviso
 		Buffer buf = new Buffer();
 
-			
+		// setup dell'input da tastiera
 		BufferedReader stdin = new BufferedReader( new InputStreamReader ( System.in ) ); 
 		int choice=0, id=1;
 		
@@ -23,8 +18,8 @@ public class Test {
 			
 			try{
 				
-				// * input da tastiera  * 
-				choice =   Integer.parseInt( stdin.readLine());
+				// parsing dell'input da tastiera
+				choice =   Integer.parseInt(stdin.readLine());
 				
 			}catch( IOException e){e.printStackTrace();}
 			
