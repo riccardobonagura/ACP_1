@@ -9,25 +9,17 @@ import java.io.*;
 
 
 public class ReaderThread extends Thread {
-	
+	//oggetto per il passaggio
 	private DataInputStream dataIn; 
 	
+	//costruttore
 	public ReaderThread ( PipedOutputStream pipeOut ){
-		
-		try{
-			
-			// crea un PipedInputStream collegato al PipedOutputStream
-			// utilizzato in output dal thread Writer
-			
+		try{ //perchè qui serve il try-catch?
 			dataIn = new DataInputStream ( new PipedInputStream ( pipeOut )  ) ;
 		}catch ( IOException e ){
 			e.printStackTrace();
 		}
-		
-		
-	}
-	
-	
+	}	
 	public void run (){
 		
 		String s;
