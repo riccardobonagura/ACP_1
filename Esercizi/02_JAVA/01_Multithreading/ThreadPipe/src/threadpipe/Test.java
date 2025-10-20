@@ -1,15 +1,16 @@
 package threadpipe;
 
+//modulo per la comunicazione inter-thread
 import java.io.PipedOutputStream;
 
 public class Test {
 	
 	public static void main(String[] args)  {
-		// TODO Auto-generated method stub
 	
-		// A piped output stream can be connected to a piped input stream to create a communications pipe.
+		//istanzio un oggetto 'pipe'
 		PipedOutputStream pipeOut = new PipedOutputStream();
-		
+
+		//consegno il 'pipe' ai thread che dovranno comunicare
 		WriterThread w = new WriterThread (pipeOut);
 		ReaderThread r = new ReaderThread (pipeOut);
 		
